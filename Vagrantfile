@@ -77,6 +77,7 @@ Vagrant.configure("2") do |config|
   libexpat1-dev \
   libpcre++-dev \
   libxml2-dev \
+  zlib1g-dev \
   gcc \
   make
   cd ${TMP_DIR}
@@ -104,5 +105,18 @@ Vagrant.configure("2") do |config|
   --with-apr=${HTTP_PREFIX}/bin/apr-1-config \
   --with-apr-util=${HTTP_PREFIX}/bin/apu-1-config \
   && make &&  make install
+  cd ${TMP_DIR}
+  wget http://us1.php.net/distributions/php-${PHP_VER}.tar.gz
+  tar -zxvf php-${PHP_VER}.tar.gz
+  rm -f php-${PHP_FILE}.tar.gz
+  cd ${TMP_DIR}/php-${PHP_VER}
+ ./configure \
+ --with-zlib \
+ --enable-static \
+ --with-apxs2=${HTTP_PREFIX}/bin/apxs \
+ --with-mysqli \
+ --enable-embedded-mysqli \
+ --enable-dba \
+  && make && make install
   SHELL
 end
