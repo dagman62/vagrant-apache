@@ -68,7 +68,6 @@ Vagrant.configure("2") do |config|
   APR_VER="1.6.3"
   APRU_VER="1.6.1"
   HTTP_VER="2.4.33"
-  PHP_FILE="php-7.2.5"
   PHP_VER="7.2.5"
   HTTP_PREFIX="/usr/local/apache"
   TMP_DIR="/tmp"
