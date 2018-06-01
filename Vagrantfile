@@ -99,10 +99,10 @@ Vagrant.configure("2") do |config|
   rm -f httpd-${HTTP_VER}.tar.gz
   cd ${TMP_DIR}/httpd-${HTTP_VER}
   ./configure \
-  --prefix=${PREFIX} \
+  --prefix=${HTTP_PREFIX} \
   --with-mpm=prefork \
-  --with-apr=${PREFIX}/bin/apr-1-config \
-  --with-apr-util=${PREFIX}/bin/apu-1-config \
+  --with-apr=${HTTP_PREFIX}/bin/apr-1-config \
+  --with-apr-util=${HTTP_PREFIX}/bin/apu-1-config \
   && make &&  make install
   SHELL
 end
