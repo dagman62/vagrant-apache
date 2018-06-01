@@ -126,6 +126,6 @@ Vagrant.configure("2") do |config|
   make \
   && rm -rf /var/lib/apt/lists/*
   chmod +x /usr/local/bin/start-apache
-  /usr/local/bin/start-apache
+  sh -c /usr/local/bin/start-apache &
   SHELL
 end
