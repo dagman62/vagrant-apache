@@ -67,7 +67,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
   APR_VER="1.6.3"
   APRU_VER="1.6.1"
-  HTTP_FILE="httpd-2.4.33"
   HTTP_VER="2.4.33"
   PHP_FILE="php-7.2.5"
   PHP_VER="7.2.5"
@@ -94,5 +93,16 @@ Vagrant.configure("2") do |config|
   cd ${TMP_DIR}/apr-util-${APRU_VER}
   ./configure --prefix=${HTTP_PREFIX} --with-apr=${HTTP_PREFIX}/bin/apr-1-config \
   && make && make install
+  cd ${TMP_DIR}
+  wget --no-check-certificate https://archive.apache.org/dist/httpd/httpd-${HTTP_VER}.tar.gz
+  tar -zxvf httpd-${HTTP_VER}.tar.gz
+  rm -f httpd-${HTTP_VER}.tar.gz
+  cd ${TMP_DIR}/httpd-${HTTP_VER}
+  ./configure-http.sh \
+  --prefix=${PREFIX} \
+  --with-mpm=prefork \
+  --with-apr=${PREFIX}/bin/apr-1-config \
+  --with-apr-util=${PREFIX}/bin/apu-1-config \
+  && make &&  make install
   SHELL
 end
