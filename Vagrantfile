@@ -98,7 +98,7 @@ Vagrant.configure("2") do |config|
   tar -zxvf httpd-${HTTP_VER}.tar.gz
   rm -f httpd-${HTTP_VER}.tar.gz
   cd ${TMP_DIR}/httpd-${HTTP_VER}
-  ./configure-http.sh \
+  ./configure \
   --prefix=${PREFIX} \
   --with-mpm=prefork \
   --with-apr=${PREFIX}/bin/apr-1-config \
