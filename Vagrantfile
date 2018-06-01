@@ -108,7 +108,7 @@ Vagrant.configure("2") do |config|
   cd ${TMP_DIR}
   wget http://us1.php.net/distributions/php-${PHP_VER}.tar.gz
   tar -zxvf php-${PHP_VER}.tar.gz
-  rm -f php-${PHP_FILE}.tar.gz
+  rm -f php-${PHP_VER}.tar.gz
   cd ${TMP_DIR}/php-${PHP_VER}
  ./configure \
  --with-zlib \
@@ -120,6 +120,12 @@ Vagrant.configure("2") do |config|
   && make && make install
   cp /vagrant/data/httpd.conf /usr/local/apache/conf
   cp /vagrant/data/start-apache /usr/local/bin
+  rm -rf /tmp/*
+  apt-get purge -y --auto-remove \
+  wget \
+  gcc \
+  make \
+  && rm -rf /var/lib/apt/lists/*
   chmod +x /usr/local/bin/start-apache
   /usr/local/bin/start-apache
   SHELL
