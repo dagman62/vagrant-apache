@@ -119,12 +119,12 @@ Vagrant.configure("2") do |config|
   && make && make install
   cp /vagrant/data/httpd.conf /usr/local/apache/conf
   cp /vagrant/data/start-apache /usr/local/bin
-  rm -rf /tmp/*
   apt-get purge -y --auto-remove \
   wget \
   gcc \
   make \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /tmp/*
   chmod +x /usr/local/bin/start-apache
   start-apache 
   SHELL
