@@ -73,12 +73,12 @@ Vagrant.configure("2") do |config|
   PHP_VER="7.2.5"
   HTTP_PREFIX="/usr/local/apache"
   TMP_DIR="/tmp"
-	apt-get update && apt-get install -y \
-	wget \
-	libexpat1-dev \
+  apt-get update && apt-get install -y \
+  wget \
+  libexpat1-dev \
   libpcre++-dev \
   libxml2-dev \
-	gcc \
+  gcc \
   make
   cd ${TMP_DIR}
   wget http://www-us.apache.org/dist//apr/apr-${APR_VER}.tar.gz
