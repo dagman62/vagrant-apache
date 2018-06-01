@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network "public_network",
+  config.vm.network "public_network", bridge: "wlo1: Wi-Fi (AirPort)",
   use_dhcp_assigned_default_route: true
 
   # Share an additional folder to the guest VM. The first argument is
