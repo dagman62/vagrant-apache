@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network "public_network", bridge: "wlo1: Wi-Fi (AirPort)",
+  config.vm.network "public_network", bridge: "wlo1",
   use_dhcp_assigned_default_route: true
 
   # Share an additional folder to the guest VM. The first argument is
@@ -118,5 +118,9 @@ Vagrant.configure("2") do |config|
  --enable-embedded-mysqli \
  --enable-dba \
   && make && make install
+  cp /vagrant/data/httpd.conf /usr/local/apache/conf
+  cp /vagrant/data/start-apache /usr/local/bin
+  chmod +x /usr/local/bin/start-apache
+  /usr/local/bin/start-apache
   SHELL
 end
